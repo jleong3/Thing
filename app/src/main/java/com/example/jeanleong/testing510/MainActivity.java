@@ -12,26 +12,36 @@ import android.view.MenuItem;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    Button b;
+    Button b, addTask;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        b = (Button) findViewById(R.id.bButton);
+        b = (Button) findViewById(R.id.calendarButton);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                b.setText("Hello");
             }
         });
+
+        addTask = (Button) findViewById(R.id.addAssignmentButton);
+        addTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent addTaskStart = new Intent(MainActivity.this, AddTaskActivity.class);
+                startActivity(addTaskStart);
+            }
+        });
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent addTask = new Intent(MainActivity.this, AddTaskActivity.class);
-                startActivity(addTask);
+                Intent addTaskStart = new Intent(MainActivity.this, AddTaskActivity.class);
+                startActivity(addTaskStart);
             }
         });
     }
